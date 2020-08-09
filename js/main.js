@@ -29,9 +29,9 @@ function getCard(card, index) {
     <div class="d-flex w-100">
       <ul class="mb-0">
         <li style="font-size: 1.2rem;">
-          Reduce ${card.min > 0 ? "entre " : "hasta "}
-          <span class="badge badge-success">${card.max}</span>${card.min > 0 ? " y " : ", pero puede perjudicar hasta "}
-          <span class="badge badge-${card.min > 0 ? "success" : "danger"}">${card.min}</span>. Promedio de <span class="badge badge-success">${
+          Reduce ${card.min >= 0 ? "entre " : "hasta "}
+          <span class="badge badge-success">${card.max}</span>${card.min >= 0 ? " y " : ", pero puede perjudicar hasta "}
+          <span class="badge badge-${card.min >= 0 ? "success" : "danger"}">${card.min}</span>. Promedio de <span class="badge badge-success">${
       card.med
     }</span>.
         </li>
