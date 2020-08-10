@@ -28,10 +28,7 @@
       property="og:description"
       content="Selecciona las cosas que puedes o quieres hacer, ¡y verás cómo tu barra de huella de carbono disminuye! "
     />
-    <meta
-      property="og:image"
-      content="https://metatags.io/assets/meta-tags-16a33a6a8531e519cc0936fbba0ad904e52d35f34a46c97a2c9f6f7dd7d336f2.png"
-    />
+    <meta property="og:image" content="https://i.postimg.cc/jdTCZcKZ/foto-de-portada.png" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
@@ -47,42 +44,39 @@
     />
   </head>
   <body>
-    <div class="d-flex justify-content-center align-items-center fixed-top custom-navbar">
-      <h5 class="mr-4 ml-4" style="color: black; white-space: nowrap;">
-        Tu huella de carbono:
+    <div class="d-flex justify-content-center flex-column align-items-right fixed-top custom-navbar">
+      <h5 class="ml-4" style="color: black; white-space: nowrap;">
+        Toneladas de CO2 que emites al año:
       </h5>
       <div style="width: 100%;">
-        <div class="progress border border-dark mr-4" style="height: 30px; cursor: help; font-weight: bold;">
+        <div class="progress border border-dark ml-1 mr-1" style="height: 30px; cursor: help; font-weight: bold;">
           <div
             class="progress-bar bg-danger progress-bar-striped progress-bar-animated"
             role="progressbar"
-            style="width: 90%;"
+            style="width: 100%;"
             data-toggle="tooltip"
             data-placement="bottom"
             title="Con los cambios que te has comprometido a realizar, difícilmente reducirás más que este límite."
-          >
-            90%
-          </div>
+            id="barraRoja"
+          ></div>
           <div
             class="progress-bar bg-warning"
             role="progressbar"
-            style="width: 5%; color: black;"
+            style="width: 0%; color: black;"
             data-toggle="tooltip"
             data-placement="bottom"
-            title="Este margen surge porque las estimaciones están en rangos, y no cifras específicas."
-          >
-            5%
-          </div>
+            title="Según los estudios más optimistas, puede que logres reducir todo esto también."
+            id="barraAmarilla"
+          ></div>
           <div
             class="progress-bar bg-success progress-bar-striped progress-bar-animated"
             role="progressbar"
-            style="width: 5%;"
+            style="width: 0%;"
             data-toggle="tooltip"
             data-placement="bottom"
             title="Esto es lo que definitivamente vas a reducir. ¡Bien hecho!"
-          >
-            5%
-          </div>
+            id="barraVerde"
+          ></div>
         </div>
       </div>
     </div>

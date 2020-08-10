@@ -1,4 +1,9 @@
 var temp = "";
+const ghgPerCapita = 5.58;
+var huellaFaltante = ghgPerCapita;
+var huellaReducida = 0;
+var huellaEnDuda = 0;
+var huellaPromedio = 0;
 
 $('[data-toggle="tooltip"]').tooltip();
 
@@ -9,6 +14,12 @@ formas.forEach((item, i) => {
   });
 });
 document.getElementById("aquiVanCards").innerHTML = temp;
+
+const barraRoja = document.getElementById("barraRoja");
+const barraAmarilla = document.getElementById("barraAmarilla");
+const barraVerde = document.getElementById("barraVerde");
+
+barraRoja.innerHTML = ghgPerCapita;
 
 function getCard(card, index) {
   var reduccion = "";
@@ -79,6 +90,8 @@ function getCard(card, index) {
             type="button"
             class="btn btn-secondary btn-outline-dark"
             style="height: 90px; width: 90px; color: white;"
+            id="${index}-0"
+            onclick="loHareYaLoHago('${index}-0', ${card.min == null ? card.med : card.min}, ${card.max == null ? 0 : card.max}, ${card.med})"
           >
             Haré esto
           </button>
@@ -86,6 +99,8 @@ function getCard(card, index) {
             type="button"
             class="btn btn-secondary btn-outline-dark"
             style="height: 90px; width: 90px; color: white;"
+            id="${index}-1"
+            onclick="loHareYaLoHago('${index}-1', ${card.min == null ? card.med : card.min}, ${card.max == null ? 0 : card.max}, ${card.med})"
           >
             Ya hago esto
           </button>
@@ -103,5 +118,54 @@ function expandir(id) {
     btn.innerHTML = "Mostrar menos";
   } else {
     btn.innerHTML = "Expandir";
+  }
+}
+
+function loHareYaLoHago(id, min, max, promedio) {
+  const element = document.getElementById(id);
+
+  if (element.classList.contains("btn-secondary")) {
+    huellaReducida += min;
+    huellaEnDuda += max;
+    huellaFaltante -= max + min;
+    huellaPromedio += promedio;
+  } else {
+    huellaReducida -= min;
+    huellaEnDuda -= max;
+    huellaFaltante += max + min;
+    huellaPromedio -= promedio;
+  }
+
+  var nuevoPorcentaje = (huellaReducida * 100) / ghgPerCapita;
+  barraVerde.style["width"] = `${nuevoPorcentaje < 0 ? 0 : nuevoPorcentaje}%`;
+  barraVerde.innerHTML = `${huellaReducida.toFixed(2)}`;
+
+  nuevoPorcentaje = (huellaEnDuda * 100) / ghgPerCapita;
+  barraAmarilla.style["width"] = `${nuevoPorcentaje < 0 ? 0 : nuevoPorcentaje}%`;
+  barraAmarilla.innerHTML = `${huellaEnDuda.toFixed(2)}`;
+
+  nuevoPorcentaje = (huellaFaltante * 100) / ghgPerCapita;
+  barraRoja.style["width"] = `${nuevoPorcentaje < 0 ? 0 : nuevoPorcentaje}%`;
+  barraRoja.innerHTML = `${huellaFaltante.toFixed(2)}`;
+
+  const splitted = id.split("-");
+  const otroBtn = document.getElementById(`${splitted[0]}-${splitted[1]}-${splitted[2] == 0 ? 1 : 0}`);
+
+  if (element.classList.contains("btn-secondary")) {
+    element.classList.remove("btn-secondary");
+    element.classList.add("btn-success");
+    element.classList.remove("btn-outline-dark");
+    element.classList.add("btn-outline-white");
+
+    otroBtn.setAttribute("disabled", "");
+    otroBtn.classList.remove("btn-outline-dark");
+  } else {
+    element.classList.remove("btn-success");
+    element.classList.add("btn-secondary");
+    element.classList.remove("btn-outline-white");
+    element.classList.add("btn-outline-dark");
+
+    otroBtn.removeAttribute("disabled");
+    otroBtn.classList.add("btn-outline-dark");
   }
 }

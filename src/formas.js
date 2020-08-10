@@ -35,8 +35,8 @@ const formas = [
         resumen: "Si compartes tu coche o le dices a un conocido que te ",
         resto:
           "lleve en su coche a un lugar a donde él también va en vez de usar tu coche para ti solito. Y quién sabe, quizá incluso te ayude a no gastar tanto dinero.",
-        min: null,
-        max: null,
+        min: 0,
+        max: 1,
         med: 0.3,
         img: "compartir transporte.jpg",
       },
@@ -45,8 +45,8 @@ const formas = [
         resumen: "No, quizá no lo estés haciendo. Lee las siguientes ",
         resto:
           "recomendaciones para manejar eficientemente: <a href='https://www.conduccioneficiente.cl' target='blank'>Conducción eficiente</a>. Ahí se muestran muchos tips para ahorrar combustible. Te ayudará también a ahorrar dinero.",
-        min: null,
-        max: null,
+        min: 0.01,
+        max: 1.46,
         med: 0.3,
         img: "conducir eficientemente.jpg",
       },
@@ -137,8 +137,8 @@ const formas = [
         resumen: "La carne de vaca o ternero es conocida por ser la más",
         resto:
           " contaminante de todas.<br>Puedes conocer las emisiones que causa cada alimento en <a href='https://ourworldindata.org/grapher/ghg-kcal-poore' target='blank'>esta tabla interactiva</a>.",
-        min: null,
-        max: null,
+        min: 0,
+        max: 1.25,
         med: 0.5,
         img: "no comer carne de vaca.jpg",
       },
@@ -301,7 +301,7 @@ const formas = [
         img: "no mascotas.jpg",
       },
       {
-        titulo: "Menos compras / herramientas más duraderas",
+        titulo: "Menos compras y/o herramientas más duraderas",
         resumen: "Evidentemente, si consumes menos y compras productos duraderos",
         resto: ", pues ayudas al medio ambiente.",
         min: 0,
@@ -323,7 +323,7 @@ const formas = [
         titulo: "Compartir bienes o servicios",
         resumen: "Optar por servicios locales o comunitarios, compartir y reparar",
         resto:
-          " las herramientas o bienes que se puedan, compartir la vivienda. Aunque estudios apuntan que estrategias de parejas como estas no ayudan a reducir nada, porque de todos modos el consumo es el doble",
+          " las herramientas o bienes que se puedan, compartir la vivienda. Aunque estudios apuntan que estrategias de parejas como estas no ayudan a reducir nada, porque de todos modos el consumo es el doble, pero aún así existen otros que afirman que sí podría suponer una reducción. De cualquier forma, vale la pena intentarlo.",
         min: 0,
         max: 0.3,
         med: 0.1,

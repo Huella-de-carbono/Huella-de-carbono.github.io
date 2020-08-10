@@ -2,5 +2,8 @@
   width: 100%;
   /* background-color: #29ad48; */
   background-color: #f8f9fa;
-  height: 60px;
+  /* height: 60px; */
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+  border-bottom: 2px solid black;
 }
