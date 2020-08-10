@@ -61,7 +61,7 @@ function getCard(card, index) {
     <div class="list-group-item">
       <div class="media">
         <img
-          src="./src/carros-contaminando.jpg"
+          src="./src/${card.img}"
           class="mr-3"
           alt="..."
           style="height: 90px; width: 90px; border-radius: 20px;"

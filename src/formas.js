@@ -10,6 +10,7 @@ const formas = [
         min: 0.7,
         max: 4.5,
         med: 1.9,
+        img: "vuelo largo.png",
       },
       {
         titulo: "Evitar un vuelo corto",
@@ -18,6 +19,7 @@ const formas = [
         min: 0.2,
         max: 1.5,
         med: 0.6,
+        img: "vuelo corto.jpg",
       },
       {
         titulo: "Usar transporte público o alternativa",
@@ -26,6 +28,7 @@ const formas = [
         min: 0.6,
         max: 1,
         med: 0.8,
+        img: "transporte publico.jpg",
       },
       {
         titulo: "Compartir transporte privado",
@@ -35,41 +38,7 @@ const formas = [
         min: null,
         max: null,
         med: 0.3,
-      },
-      {
-        titulo: "Evitar un vuelo largo",
-        resumen: "Los combustibles necesarios para un vuelo de avión son ",
-        resto:
-          "muy contaminantes. Siempre es más ecológico ir en coche, en camión o incluso en tren, aunque esto no siempre sea lo más económico, claro.",
-        min: 0.7,
-        max: 4.5,
-        med: 1.9,
-      },
-      {
-        titulo: "Evitar un vuelo corto",
-        resumen: "Al evitar un vuelo corto también puedes ayudar a reducir ",
-        resto: "tu huella de carbono. Viajar en coche, camión o tren es mejor, aunque sea menos económico e incluso práctico.",
-        min: 0.2,
-        max: 1.5,
-        med: 0.6,
-      },
-      {
-        titulo: "Usar transporte público o alternativa",
-        resumen: "Si tienes la oportunidad de ir en bicicleta o en transporte ",
-        resto:
-          "público, puedes reducir drásticamente tus emisiones de carbono. No siempre es necesario usar tu coche para ir a un lugar. <b>¡Pero cuidado!</b> No pidas un taxi o similar, porque ese tipo de servicio consume hasta un 47% de su combustible sin un pasajero ni rumbo.",
-        min: 0.6,
-        max: 1,
-        med: 0.8,
-      },
-      {
-        titulo: "Compartir transporte privado",
-        resumen: "Si compartes tu coche o le dices a un conocido que te ",
-        resto:
-          "lleve en su coche a un lugar a donde él también va en vez de usar tu coche para ti solito. Y quién sabe, quizá incluso te ayude a no gastar tanto dinero.",
-        min: null,
-        max: null,
-        med: 0.3,
+        img: "compartir transporte.jpg",
       },
       {
         titulo: "Conducir eficientemente",
@@ -79,6 +48,7 @@ const formas = [
         min: null,
         max: null,
         med: 0.3,
+        img: "conducir eficientemente.jpg",
       },
       {
         titulo: "Cambiarse a un híbrido",
@@ -88,6 +58,7 @@ const formas = [
         min: -0.2,
         max: 3.1,
         med: 0.7,
+        img: "coche híbrido.jpg",
       },
       {
         titulo: "Carro 100% eléctrico",
@@ -97,6 +68,7 @@ const formas = [
         min: -1.9,
         max: 5.4,
         med: 2,
+        img: "coche eléctrico.jpg",
       },
       {
         titulo: "Vivir sin coche",
@@ -105,6 +77,7 @@ const formas = [
         min: 0.6,
         max: 3.6,
         med: 0,
+        img: "vivir sin carro.jpg",
       },
       {
         titulo: "Trabajar desde casa",
@@ -113,6 +86,7 @@ const formas = [
         min: 0.1,
         max: 1.4,
         med: 0.4,
+        img: "trabajar desde casa.jpg",
       },
     ],
   },
@@ -127,6 +101,7 @@ const formas = [
         min: 0.01,
         max: 1.3,
         med: 0.3,
+        img: "dieta saludable.jpg",
       },
       {
         titulo: "Dieta vegana",
@@ -136,6 +111,7 @@ const formas = [
         min: 0.4,
         max: 2.1,
         med: 0.9,
+        img: "dieta vegana.jpg",
       },
       {
         titulo: "Dieta vegetariana",
@@ -144,6 +120,7 @@ const formas = [
         min: 0.01,
         max: 1.5,
         med: 0.5,
+        img: "dieta vegetariana.jpg",
       },
       {
         titulo: "Insectos como fuente de proteína",
@@ -153,15 +130,17 @@ const formas = [
         min: 0.01,
         max: 1.5,
         med: 0.5,
+        img: "comer insectos.jpg",
       },
       {
         titulo: "No comer carne de vaca",
-        resumen: "La carne de vaca o ternero es conocida por ser la más contaminante de todas.",
+        resumen: "La carne de vaca o ternero es conocida por ser la más",
         resto:
-          "<br>Puedes conocer las emisiones que causa cada alimento en <a href='https://ourworldindata.org/grapher/ghg-kcal-poore' target='blank'>esta tabla interactiva</a>.",
+          " contaminante de todas.<br>Puedes conocer las emisiones que causa cada alimento en <a href='https://ourworldindata.org/grapher/ghg-kcal-poore' target='blank'>esta tabla interactiva</a>.",
         min: null,
         max: null,
         med: 0.5,
+        img: "no comer carne de vaca.jpg",
       },
       {
         titulo: "Consumir productos regionales o locales",
@@ -170,6 +149,7 @@ const formas = [
         min: 0,
         max: 1.1,
         med: 0.4,
+        img: "productos regionales o locales.jpg",
       },
       {
         titulo: "Consumir productos de temporada",
@@ -178,6 +158,7 @@ const formas = [
         min: 0,
         max: 0.4,
         med: 0.2,
+        img: "productos de temporada.jpg",
       },
       {
         titulo: "Producir tus propios cultivos o comida",
@@ -186,6 +167,7 @@ const formas = [
         min: null,
         max: null,
         med: 0.4,
+        img: "propia comida.jpg",
       },
       {
         titulo: "Pedir comida ecológica en restaurantes",
@@ -194,6 +176,7 @@ const formas = [
         min: null,
         max: null,
         med: 0.3,
+        img: "restaurante comida buena.jpg",
       },
       {
         titulo: "Menos comida procesada / alcohol",
@@ -202,6 +185,7 @@ const formas = [
         min: null,
         max: null,
         med: 0.2,
+        img: "no alcohol.jpg",
       },
     ],
   },
@@ -215,6 +199,7 @@ const formas = [
         min: 0.1,
         max: 4.8,
         med: 1.3,
+        img: "propia energía renovable.jpg",
       },
       {
         titulo: "Comprar energía renovable",
@@ -223,14 +208,17 @@ const formas = [
         min: 0.3,
         max: 2.5,
         med: 1.5,
+        img: "comprar energía renovable.jpg",
       },
       {
         titulo: "Remodelación y renovación de la casa",
         resumen: "Detectar qué partes de la casa están peor aisladas y reforzarlas.",
-        resto: "",
+        resto:
+          " Pero esto tiene que involucrar remodelas las paredes, quizá el techo. Es una remodelación para mejorar el aislamiento de la casa.",
         min: 0,
         max: 1.9,
         med: 0.9,
+        img: "aislar la casa.jpg",
       },
       {
         titulo: "Usar una bomba de calor",
@@ -240,6 +228,7 @@ const formas = [
         min: 0.1,
         max: 1.3,
         med: 0.8,
+        img: "bomba de calor.jpg",
       },
       {
         titulo: "Usar un boiler solar o similar",
@@ -248,6 +237,7 @@ const formas = [
         min: 0.1,
         max: 1.3,
         med: 0.7,
+        img: "boiler solar.jpg",
       },
       {
         titulo: "Electrodomésticos más eficientes",
@@ -256,6 +246,7 @@ const formas = [
         min: 0.01,
         max: 0.3,
         med: 0.1,
+        img: "estufa electrica.jpg",
       },
       {
         titulo: "Ahorrar agua caliente cuando sea posible",
@@ -264,15 +255,17 @@ const formas = [
         min: 0.1,
         max: 0.6,
         med: 0.3,
+        img: "agua caliente.jpg",
       },
       {
         titulo: "Mejor aislamiento",
         resumen: "Identificar qué partes de la casa están peor aisladas y reforzarlas,",
         resto:
-          " tendrá un efecto positivo en el medio ambiente, porque se requerirá menos calefacción para mantener la casa a una temperatura adecuada.",
+          " tendrá un efecto positivo en el medio ambiente, porque se requerirá menos calefacción para mantener la casa a una temperatura adecuada.<br>No necesitas remodelar la casa, solo poner algún aislamiento en el techo o las ventanas.",
         min: null,
         max: null,
         med: 0.2,
+        img: "aislar el techo.jpg",
       },
       {
         titulo: "Vivir en una casa pequeña / compartir vivienda",
@@ -281,6 +274,7 @@ const formas = [
         min: 0,
         max: 1,
         med: 0.4,
+        img: "casa pequeña.jpg",
       },
       {
         titulo: "¡Vivir en una casa pasiva!",
@@ -290,6 +284,7 @@ const formas = [
         min: 0.1,
         max: 0.9,
         med: 0.5,
+        img: "casa pasiva.jpg",
       },
     ],
   },
@@ -303,6 +298,7 @@ const formas = [
         min: 0.01,
         max: 2.4,
         med: 0.8,
+        img: "no mascotas.jpg",
       },
       {
         titulo: "Menos compras / herramientas más duraderas",
@@ -311,14 +307,17 @@ const formas = [
         min: 0,
         max: 0.35,
         med: 0.15,
+        img: "menos productos.jpg",
       },
       {
         titulo: "Reciclar",
-        resumen: "",
-        resto: "",
+        resumen: "Sí, sé que es poco lo que reduce, pero reciclar no es la mejor",
+        resto:
+          " forma de reducir la huella de carbono según algunos estudios, aunque sí que es excelente para otros propósitos igual de importantes, como reducir la cantidad de materia prima que consumimos. Si ya lo haces, ¡sigue así!",
         min: 0,
         max: 0.3,
         med: 0.1,
+        img: "reciclar.jpg",
       },
       {
         titulo: "Compartir bienes o servicios",
@@ -328,6 +327,7 @@ const formas = [
         min: 0,
         max: 0.3,
         med: 0.1,
+        img: "compartir bienes.jpg",
       },
     ],
   },
