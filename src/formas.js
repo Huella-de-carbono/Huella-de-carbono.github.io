@@ -13,9 +13,9 @@ const formas = [
       },
       {
         titulo: "Compartir transporte privado",
-        resumen: "Si compartes tu coche o le dices a un conocido que te ",
+        resumen: "Si compartes tu coche o le dices a un conocido ",
         resto:
-          "lleve en su coche a un lugar a donde él también se dirige, quizá incluso te ayude a ahorrar algo de dinero si comparten las cuentas.",
+          "que te lleve en su coche a un lugar a donde él también se dirige, quizá incluso te ayude a ahorrar algo de dinero si comparten las cuentas.",
         min: 0,
         max: 1,
         med: 0.3,
@@ -23,9 +23,9 @@ const formas = [
       },
       {
         titulo: "Conducir eficientemente",
-        resumen: "No, quizá no lo estés haciendo. Lee las siguientes ",
+        resumen: "No, quizá no lo estés haciendo. Lee las ",
         resto:
-          "recomendaciones para manejar eficientemente antes de seleccionar que ya haces esto: <a href='https://www.conduccioneficiente.cl' target='blank'>Conducción eficiente</a>. Ahí se muestran muchos tips para ahorrar combustible. Te ayudará también a ahorrar dinero.",
+          "siguientes recomendaciones para manejar eficientemente antes de seleccionar que ya haces esto: <a href='https://www.conduccioneficiente.cl' target='blank'>Conducción eficiente</a>. Ahí se muestran muchos tips para ahorrar combustible. Te ayudará también a ahorrar dinero.",
         min: 0.01,
         max: 1.46,
         med: 0.3,
@@ -33,9 +33,9 @@ const formas = [
       },
       {
         titulo: "Cambiarse a un híbrido",
-        resumen: "¡Cuidado! Esto tiene trampa: si la red eléctrica de ",
+        resumen: "¡Cuidado! Esto tiene trampa: si la red eléctrica ",
         resto:
-          "tu localidad genera la energía con combustión fósil, termina siendo mejor usar un coche de gasolina. Además, no debes cambiar de coche a menos que tengas por lo menos 76,000 KM, aproximadamente. Por esto mismo, resulta que hacer este cambio puede ser incluso contraproducente, dependiendo de dónde vivas.",
+          "de tu localidad genera la energía con combustión fósil, termina siendo mejor usar un coche de gasolina. Además, no debes cambiar de coche a menos que tenga por lo menos 76,000 KM, aproximadamente. Por esto mismo, resulta que hacer este cambio puede ser incluso contraproducente, dependiendo de dónde vivas.",
         min: -0.2,
         max: 3.1,
         med: 0.7,
@@ -43,9 +43,9 @@ const formas = [
       },
       {
         titulo: "Carro 100% eléctrico",
-        resumen: "¡Cuidado! Esto tiene trampa: si la red eléctrica de ",
+        resumen: "¡Cuidado! Esto tiene trampa: si la red eléctrica ",
         resto:
-          "tu localidad genera la energía con combustión fósil, termina siendo mejor usar un coche de gasolina. Además, no debes cambiar de coche a menos que tengas por lo menos 76,000 KM, aproximadamente. Por esto mismo, resulta que hacer este cambio puede ser incluso contraproducente, dependiendo de dónde vivas.",
+          "de tu localidad genera la energía con combustión fósil, termina siendo mejor usar un coche de gasolina. Además, no debes cambiar de coche a menos que tenga por lo menos 76,000 KM, aproximadamente. Por esto mismo, resulta que hacer este cambio puede ser incluso contraproducente, dependiendo de dónde vivas.",
         min: -1.9,
         max: 5.4,
         med: 2,
@@ -53,8 +53,8 @@ const formas = [
       },
       {
         titulo: "Vivir sin coche",
-        resumen: "No compres un coche. Ten a la mano la bicicleta y usa ",
-        resto: "transportes públicos o compartidos como alternativa.",
+        resumen: "No compres un coche. Ten a la mano la bicicleta ",
+        resto: "y usa transportes públicos o compartidos como alternativa.",
         min: 0.6,
         max: 3.6,
         med: 0,
@@ -69,25 +69,25 @@ const formas = [
         med: 0.4,
         img: "trabajar desde casa.jpg",
       },
-      // {
-      //   titulo: "Evitar un vuelo largo",
-      //   resumen: "Los combustibles necesarios para un vuelo de avión son ",
-      //   resto:
-      //     "muy contaminantes. Siempre es más ecológico ir en coche, en camión o incluso en tren, aunque esto no siempre sea lo más económico, claro.",
-      //   min: 0.7,
-      //   max: 4.5,
-      //   med: 1.9,
-      //   img: "vuelo largo.png",
-      // },
-      // {
-      //   titulo: "Evitar un vuelo corto",
-      //   resumen: "Al evitar un vuelo corto también puedes ayudar a reducir ",
-      //   resto: "tu huella de carbono. Viajar en coche, camión o tren es mejor, aunque sea menos económico e incluso práctico.",
-      //   min: 0.2,
-      //   max: 1.5,
-      //   med: 0.6,
-      //   img: "vuelo corto.jpg",
-      // },
+      {
+        titulo: "Evitar un vuelo largo",
+        resumen: "Los combustibles necesarios para un vuelo de ",
+        resto:
+          "avión son muy contaminantes. Siempre es más ecológico en camión o incluso en tren, aunque esto no siempre sea lo más económico, claro.",
+        min: 0.7,
+        max: 4.5,
+        med: 1.9,
+        img: "vuelo largo.png",
+      },
+      {
+        titulo: "Evitar un vuelo corto",
+        resumen: "Al evitar un vuelo corto también puedes ayudar ",
+        resto: "a reducir tu huella de carbono. Viajar en camión o incluso en tren es mejor, aunque sea menos económico e incluso práctico.",
+        min: 0.2,
+        max: 1.5,
+        med: 0.6,
+        img: "vuelo corto.jpg",
+      },
     ],
   },
   {
@@ -95,9 +95,9 @@ const formas = [
     cards: [
       {
         titulo: "Seguir una dieta saludable",
-        resumen: "Una dieta saludable tiene menos carnes rojas y procesados. ",
+        resumen: "Una dieta saludable tiene menos carnes rojas ",
         resto:
-          "Básicamente es hacerle caso a los nutricionistas. La ganadería contamina mucho, y reducir el consumo de carnes ayudará a contaminar menos.",
+          "y procesados. Básicamente es hacerle caso a los nutricionistas. La ganadería contamina mucho, y reducir el consumo de carnes ayudará a contaminar menos.",
         min: 0.01,
         max: 1.3,
         med: 0.3,
@@ -105,9 +105,9 @@ const formas = [
       },
       {
         titulo: "Dieta vegana",
-        resumen: "Nada de producto animal.",
+        resumen: "Nada de producto animal. Al contrario de",
         resto:
-          " Al contrario de lo que muchos piensan, los nutricionistas no han encontrado que una dieta vegana repercuta negativamente en la salud, pero solo si se sigue correctamente. Si planeas intentar esto, es recomendable acudir a un profesional.",
+          " lo que muchos piensan, los nutricionistas no han encontrado que una dieta vegana repercuta negativamente en la salud, pero solo si se sigue correctamente. Si planeas intentar esto, es recomendable acudir a un profesional.",
         min: 0.4,
         max: 2.1,
         med: 0.9,
@@ -124,9 +124,9 @@ const formas = [
       },
       {
         titulo: "Insectos como fuente de proteína",
-        resumen: "Los insectos pueden proporcionar hasta 4 veces la cantidad de proteína que la carne,",
+        resumen: "Los insectos pueden proporcionar hasta 4 ",
         resto:
-          " y liberan hasta <a href='https://comprarinsectoscomestibles.es/comer-insectos-comestibles-frenar-cambio-climatico/' target='blank'>2850 veces menos CO2</a> que la carne de vaca.<br>Por ejemplo, <a href='https://comprarinsectoscomestibles.es/insectos-comestibles-una-dieta-para-el-futuro-hoy/' target='blank'>si consumiéramos 100gms de  grillos nos aportarían 60 gms de proteína</a>, mientras que un filete de vacuno sólo 20gms.  A su vez nos daría el 20% de la fibra que necesitaríamos diariamente.<br>Existen proyectos como el <a href='https://thehiveexplorer.com/' target='blank'>Hive Explorer</a> que te ayudarán a generar tus propios insectos 100% comestibles. ¡No les tengas miedo, saben muy bien!",
+          "veces la cantidad de proteína que la carne, y liberan hasta <a href='https://comprarinsectoscomestibles.es/comer-insectos-comestibles-frenar-cambio-climatico/' target='blank'>2850 veces menos CO2</a> que la carne de vaca.<br>Por ejemplo, <a href='https://comprarinsectoscomestibles.es/insectos-comestibles-una-dieta-para-el-futuro-hoy/' target='blank'>si consumiéramos 100gms de  grillos nos aportarían 60 gms de proteína</a>, mientras que un filete de vacuno sólo 20gms.  A su vez nos daría el 20% de la fibra que necesitaríamos diariamente.<br>Existen proyectos como el <a href='https://thehiveexplorer.com/' target='blank'>Hive Explorer</a> que te ayudarán a generar tus propios insectos 100% comestibles. ¡No les tengas miedo, saben muy bien!",
         min: 0.01,
         max: 1.5,
         med: 0.5,
@@ -134,9 +134,9 @@ const formas = [
       },
       {
         titulo: "No comer carne de vaca",
-        resumen: "La carne de vaca o ternero es conocida por ser la más",
+        resumen: "La carne de vaca o ternero es conocida",
         resto:
-          " contaminante de todas.<br>Puedes conocer las emisiones que causa cada alimento en <a href='https://ourworldindata.org/grapher/ghg-kcal-poore' target='blank'>esta tabla interactiva</a>.",
+          " por ser la más contaminante de todas.<br>Puedes conocer las emisiones que causa cada alimento en <a href='https://ourworldindata.org/grapher/ghg-kcal-poore' target='blank'>esta tabla interactiva</a>.",
         min: 0,
         max: 1.25,
         med: 0.5,
@@ -144,8 +144,8 @@ const formas = [
       },
       {
         titulo: "Consumir productos regionales o locales",
-        resumen: "Los productos regionales no requieren mucho transporte para llegar hasta ti,",
-        resto: " y tampoco necesitan ambientes controlados para crecer.",
+        resumen: "Los productos regionales no requieren",
+        resto: " mucho transporte para llegar hasta ti, y tampoco necesitan ambientes controlados para crecer.",
         min: 0,
         max: 1.1,
         med: 0.4,
@@ -153,8 +153,9 @@ const formas = [
       },
       {
         titulo: "Consumir productos de temporada",
-        resumen: "Aquellos productos que no requieren calefactores ni tratos especiales ",
-        resto: " en cierta época del año, son los que se dan bien en esa temporada, por lo que se requiere menos energía para producirlos.",
+        resumen: "Aquellos productos que no requieren",
+        resto:
+          " calefactores ni tratos especiales  en cierta época del año, son los que se dan bien en esa temporada, por lo que se requiere menos energía para producirlos.",
         min: 0,
         max: 0.4,
         med: 0.2,
@@ -162,8 +163,8 @@ const formas = [
       },
       {
         titulo: "Producir tus propios cultivos o comida",
-        resumen: "Ya sea que tengas un jardín con algunos cultivos o una pequeña granja,",
-        resto: " producir tu propia comida siempre beneficia al medio ambiente.",
+        resumen: "Ya sea que tengas un jardín con algunos",
+        resto: " cultivos o una pequeña granja, producir tu propia comida siempre beneficia al medio ambiente.",
         min: null,
         max: null,
         med: 0.4,
@@ -171,8 +172,9 @@ const formas = [
       },
       {
         titulo: "Pedir comida ecológica en restaurantes",
-        resumen: "Por lo que has leído arriba, algo ecológico sería no pedir mucha carne",
-        resto: " (o directamente evitarla), preferir insectos, pedir productos de temporada y/o locales, entre otros.",
+        resumen: "Por lo que has leído arriba, algo ecológico",
+        resto:
+          " sería no pedir mucha carne (o directamente evitarla), preferir insectos, pedir productos de temporada y/o locales, entre otros.",
         min: null,
         max: null,
         med: 0.3,
@@ -194,8 +196,8 @@ const formas = [
     cards: [
       {
         titulo: "Generar tu propia energía renovable",
-        resumen: "Compra unos paneles solares. Es algo de lo mejor que puedes hacer.",
-        resto: "",
+        resumen: "Compra unos paneles solares. Es muy bueno",
+        resto: " para reducir tu huella de carbono.",
         min: 0.1,
         max: 4.8,
         med: 1.3,
@@ -203,8 +205,8 @@ const formas = [
       },
       {
         titulo: "Comprar energía renovable",
-        resumen: "Si en tu localidad existe un servicio que ofrezca energía renovable,",
-        resto: " es buena idea comprarles esa valiosa energía.",
+        resumen: "Si en tu localidad existe un servicio que ofrezca",
+        resto: " energía renovable, es buena idea comprarles esa valiosa energía.",
         min: 0.3,
         max: 2.5,
         med: 1.5,
@@ -212,8 +214,8 @@ const formas = [
       },
       {
         titulo: "Electrodomésticos más eficientes",
-        resumen: "Estufa eléctrica, refrigerador moderno, microondas de último año, etc. Todo ayuda.",
-        resto: "",
+        resumen: "Estufa eléctrica, refrigerador moderno,",
+        resto: " microondas de último año, etc. Todo ayuda.",
         min: 0.01,
         max: 0.3,
         med: 0.1,
@@ -221,9 +223,8 @@ const formas = [
       },
       {
         titulo: "Usar una bomba de calor",
-        resumen:
-          "Para calentar tu casa o el agua de la ducha, usa una <a href='https://youtu.be/uHehqh6eGF8' target='blank'>bomba de calor</a>,",
-        resto: " que no ocupa gas fósil para funcionar.",
+        resumen: "Para calentar tu casa o el agua de la ducha,",
+        resto: " usa una <a href='https://youtu.be/uHehqh6eGF8' target='blank'>bomba de calor</a>, que no ocupa gas fósil para funcionar.",
         min: 0.1,
         max: 1.3,
         med: 0.8,
@@ -231,8 +232,8 @@ const formas = [
       },
       {
         titulo: "Usar un boiler solar o similar",
-        resumen: "Calentar tu casa o agua con métodos renovables (excepto el método de arriba).",
-        resto: "",
+        resumen: "Calentar tu casa o agua con métodos renovables",
+        resto: " (pero si usarás una bomba de calor, no selecciones este, sino el de arriba).",
         min: 0.1,
         max: 1.3,
         med: 0.7,
@@ -240,8 +241,9 @@ const formas = [
       },
       {
         titulo: "Ahorrar agua caliente cuando sea posible",
-        resumen: "En pleno verano, ¿para qué quieres agua caliente?",
-        resto: " Es buena idea acostumbrarte a usar agua fría si el agua caliente no es estrictamente necesaria.",
+        resumen: "En verano, ¿para qué quieres agua caliente?",
+        resto:
+          " Es buena idea acostumbrarte a usar agua fría si el agua caliente no es estrictamente necesaria. Es más, si realmente te interesa el planeta, no usarás agua caliente casi ni en invierno.",
         min: 0.1,
         max: 0.6,
         med: 0.3,
@@ -249,9 +251,9 @@ const formas = [
       },
       {
         titulo: "Mejor aislamiento",
-        resumen: "Identificar qué partes de la casa están peor aisladas y reforzarlas,",
+        resumen: "No necesitas remodelar la casa, solo poner",
         resto:
-          " tendrá un efecto positivo en el medio ambiente, porque se requerirá menos calefacción para mantener la casa a una temperatura adecuada.<br>No necesitas remodelar la casa, solo poner algún aislamiento en el techo o las ventanas.",
+          " algún aislamiento en el techo o las ventanas.<br>Identificar qué partes de la casa están peor aisladas y reforzarlas, tendrá un efecto positivo en el medio ambiente, porque se requerirá menos calefacción para mantener la casa a una temperatura adecuada.",
         min: null,
         max: null,
         med: 0.2,
@@ -259,9 +261,9 @@ const formas = [
       },
       {
         titulo: "Remodelación y renovación de la casa",
-        resumen: "Detectar qué partes de la casa están peor aisladas y reforzarlas.",
+        resumen: "Esto tiene que involucrar remodelar las paredes,",
         resto:
-          " Pero esto tiene que involucrar remodelas las paredes, quizá el techo. Es una remodelación para mejorar el aislamiento de la casa.",
+          " quizá el techo. Es una remodelación para mejorar el aislamiento de la casa.<br>La idea es detectar qué partes de la casa están peor aisladas y reforzarlas.",
         min: 0,
         max: 1.9,
         med: 0.9,
@@ -278,9 +280,9 @@ const formas = [
       },
       {
         titulo: "¡Vivir en una casa pasiva!",
-        resumen: "¿Que qué es una casa pasiva? En <a href='https://youtu.be/n0CeNAEzsp8' target='_blank'>este video</a> puedes saber.",
+        resumen: "¿Que qué es una casa pasiva?",
         resto:
-          "<br>Pero en pocas palabras, una casa pasiva es aquella que está construida de cierta forma que la energía requerida para climatizarla sea mínima. Son realmente fabulosas, porque combinan muchas técnicas para lograr esta eficiencia tan elevada.<br>Puede parecer que no disminuyen mucho la huella de carbono, pero es que los materiales y la construcción tienen su impacto, aunque al fin y al cabo, los beneficios superan a los gastos y resulta conveniente.",
+          " En <a href='https://youtu.be/n0CeNAEzsp8' target='_blank'>este video</a> puedes saber.<br>Pero en pocas palabras, una casa pasiva es aquella que está construida de cierta forma que la energía requerida para climatizarla sea mínima. Son realmente fabulosas, porque combinan muchas técnicas para lograr esta eficiencia tan elevada.<br>Puede parecer que no disminuyen mucho la huella de carbono, pero es que los materiales y la construcción tienen su impacto, aunque al fin y al cabo, los beneficios superan a los gastos y resulta conveniente.",
         min: 0.1,
         max: 0.9,
         med: 0.5,
@@ -302,8 +304,8 @@ const formas = [
       },
       {
         titulo: "Menos compras y/o herramientas más duraderas",
-        resumen: "Evidentemente, si consumes menos y compras productos duraderos",
-        resto: ", pues ayudas al medio ambiente.",
+        resumen: "Evidentemente, si consumes menos y",
+        resto: " compras productos duraderos, pues ayudas al medio ambiente.",
         min: 0,
         max: 0.35,
         med: 0.15,
@@ -311,9 +313,9 @@ const formas = [
       },
       {
         titulo: "Reciclar",
-        resumen: "Sí, sé que es poco lo que reduce, pero reciclar no es la mejor",
+        resumen: "Aunque no lo parezca, reciclar no es",
         resto:
-          " forma de reducir la huella de carbono según algunos estudios, aunque sí que es excelente para otros propósitos igual de importantes, como reducir la cantidad de materia prima que consumimos. Si ya lo haces, ¡sigue así!",
+          " la mejor forma de reducir la huella de carbono según algunos estudios, aunque <b>sí que es excelente</b> para otros propósitos igualmente importantes, como reducir la cantidad de materia prima que consumimos. Si ya lo haces, ¡sigue así!",
         min: 0,
         max: 0.3,
         med: 0.1,

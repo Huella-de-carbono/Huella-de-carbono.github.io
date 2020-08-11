@@ -175,7 +175,7 @@ function loHareYaLoHago(id, min, max, promedio) {
   // Actualizar el texto de resumen
   resumen.innerHTML =
     huellaFaltante != ghgPerCapita
-      ? `Promedio de reducción: <span class="badge badge-success" data-toggle="tooltip" data-placement="bottom" title="">${huellaPromedio.toFixed(
+      ? `Reducción en promedio: <span class="badge badge-success" data-toggle="tooltip" data-placement="bottom" title="">${huellaPromedio.toFixed(
           2
         )}</span> tCO2.<br>Reducción teórica máxima: <span class="badge badge-success" data-toggle="tooltip" data-placement="bottom" title="">${huellaEnDuda.toFixed(
           2
