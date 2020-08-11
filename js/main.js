@@ -126,17 +126,39 @@ function loHareYaLoHago(id, min, max, promedio) {
   const element = document.getElementById(id);
   const resumen = document.getElementById("resumen");
 
-  // Si el botón está gris, entonces sumas, si no, se resta, porque se entiende que lo des-seleccionó
+  // Actualizar el botón presionado
+  const splitted = id.split("-");
+  const otroBtn = document.getElementById(`${splitted[0]}-${splitted[1]}-${splitted[2] == 0 ? 1 : 0}`);
+
   if (element.classList.contains("btn-secondary")) {
-    huellaReducida += min;
-    huellaEnDuda += max;
-    huellaFaltante -= max;
-    huellaPromedio += promedio;
+    element.classList.replace("btn-secondary", "btn-success");
+    element.classList.replace("btn-outline-dark", "btn-outline-white");
+
+    // otroBtn.setAttribute("disabled", "");
+    // otroBtn.classList.remove("btn-outline-dark");
   } else {
-    huellaReducida -= min;
-    huellaEnDuda -= max;
-    huellaFaltante += max;
-    huellaPromedio -= promedio;
+    element.classList.replace("btn-success", "btn-secondary");
+    element.classList.replace("btn-outline-white", "btn-outline-dark");
+
+    // otroBtn.removeAttribute("disabled");
+    // otroBtn.classList.add("btn-outline-dark");
+  }
+
+  // Si el otro botón está verde, no sumar ni nada
+  if (otroBtn.classList.contains("btn-success")) {
+    otroBtn.classList.replace("btn-success", "btn-secondary");
+  } else {
+    if (element.classList.contains("btn-success")) {
+      huellaReducida += min;
+      huellaEnDuda += max;
+      huellaFaltante -= max;
+      huellaPromedio += promedio;
+    } else {
+      huellaReducida -= min;
+      huellaEnDuda -= max;
+      huellaFaltante += max;
+      huellaPromedio -= promedio;
+    }
   }
 
   // Si la huella faltante es menor a 0, entonces cambiar el título
@@ -170,26 +192,4 @@ function loHareYaLoHago(id, min, max, promedio) {
   nuevoPorcentaje = (huellaFaltante * 100) / ghgPerCapita;
   barrasRoja.style["width"] = `${nuevoPorcentaje < 0 ? 0 : nuevoPorcentaje}%`;
   barrasRoja.innerHTML = `${huellaFaltante.toFixed(2)}`;
-
-  // Actualizar el botón presionado
-  const splitted = id.split("-");
-  const otroBtn = document.getElementById(`${splitted[0]}-${splitted[1]}-${splitted[2] == 0 ? 1 : 0}`);
-
-  if (element.classList.contains("btn-secondary")) {
-    element.classList.remove("btn-secondary");
-    element.classList.add("btn-success");
-    element.classList.remove("btn-outline-dark");
-    element.classList.add("btn-outline-white");
-
-    otroBtn.setAttribute("disabled", "");
-    otroBtn.classList.remove("btn-outline-dark");
-  } else {
-    element.classList.remove("btn-success");
-    element.classList.add("btn-secondary");
-    element.classList.remove("btn-outline-white");
-    element.classList.add("btn-outline-dark");
-
-    otroBtn.removeAttribute("disabled");
-    otroBtn.classList.add("btn-outline-dark");
-  }
 }
