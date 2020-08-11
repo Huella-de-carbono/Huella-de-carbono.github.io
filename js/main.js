@@ -15,6 +15,9 @@ formas.forEach((item, i) => {
 });
 document.getElementById("aquiVanCards").innerHTML = temp;
 
+// Esto igual el espacio del navbar flotante con el espacio de arriba
+document.getElementById("espacioNavbar").style.height = `${document.getElementById("navbar").clientHeight}px`;
+
 const barrasRoja = document.getElementById("barraRoja");
 const barraAmarilla = document.getElementById("barraAmarilla");
 const barraVerde = document.getElementById("barraVerde");
@@ -133,21 +136,16 @@ function loHareYaLoHago(id, min, max, promedio) {
   if (element.classList.contains("btn-secondary")) {
     element.classList.replace("btn-secondary", "btn-success");
     element.classList.replace("btn-outline-dark", "btn-outline-white");
-
-    // otroBtn.setAttribute("disabled", "");
-    // otroBtn.classList.remove("btn-outline-dark");
   } else {
     element.classList.replace("btn-success", "btn-secondary");
     element.classList.replace("btn-outline-white", "btn-outline-dark");
-
-    // otroBtn.removeAttribute("disabled");
-    // otroBtn.classList.add("btn-outline-dark");
   }
 
-  // Si el otro botón está verde, no sumar ni nada
+  // Si el otro botón está verde, no sumar ni nada, solo deshabilitar el otro
   if (otroBtn.classList.contains("btn-success")) {
     otroBtn.classList.replace("btn-success", "btn-secondary");
   } else {
+    // Si el otro estaba apagado, entonces sumar o restar a las variables
     if (element.classList.contains("btn-success")) {
       huellaReducida += min;
       huellaEnDuda += max;
@@ -159,22 +157,48 @@ function loHareYaLoHago(id, min, max, promedio) {
       huellaFaltante += max;
       huellaPromedio -= promedio;
     }
+    // Esto es porque a veeces las restas y sumas dan decimales muy pequeños y toFixed entrega -0.00
+    if (parseFloat(huellaPromedio.toFixed(2)) == 0) huellaPromedio = 0;
+    if (parseFloat(huellaReducida.toFixed(2)) == 0) huellaReducida = 0;
+    if (parseFloat(huellaEnDuda.toFixed(2)) == 0) huellaEnDuda = 0;
+    if (parseFloat(huellaFaltante.toFixed(2)) == 0) huellaFaltante = 0;
   }
 
   // Si la huella faltante es menor a 0, entonces cambiar el título
   if (huellaFaltante <= 0) {
     document.getElementById("navbar-title").innerHTML =
-      "¡Has arrazado con tu huella de carbono! Aún así, toma en cuenta el margen de error posible.";
+      "¡Has arrazado con tu huella de carbono! Aun así, toma en cuenta el margen de error posible.";
   } else {
     document.getElementById("navbar-title").innerHTML = "Toneladas de CO2 que emites al año:";
   }
 
   // Actualizar el texto de resumen
-  resumen.innerHTML = `Promedio de reducción: <span class="badge badge-success">${huellaPromedio.toFixed(
-    2
-  )}</span> tCO2.<br>Reducción teórica máxima: <span class="badge badge-success">${huellaEnDuda.toFixed(
-    2
-  )}</span> tCO2 y mínima: <span class="badge badge-${huellaReducida < 0 ? "danger" : "success"}">${huellaReducida.toFixed(2)}</span> tCO2`;
+  resumen.innerHTML =
+    huellaFaltante != ghgPerCapita
+      ? `Promedio de reducción: <span class="badge badge-success" data-toggle="tooltip" data-placement="bottom" title="">${huellaPromedio.toFixed(
+          2
+        )}</span> tCO2.<br>Reducción teórica máxima: <span class="badge badge-success" data-toggle="tooltip" data-placement="bottom" title="">${huellaEnDuda.toFixed(
+          2
+        )}</span> tCO2 y mínima: <span class="badge badge-${
+          huellaReducida < 0 ? "danger" : "success"
+        }" data-toggle="tooltip" data-placement="bottom" title="">${huellaReducida.toFixed(2)}</span> tCO2`
+      : "";
+  $('[data-toggle="tooltip"]').tooltip();
+
+  // Añade un padding cuando las barras no son 0
+  if (huellaFaltante == ghgPerCapita) {
+    barraVerde.classList.remove("pl-2");
+    barraAmarilla.classList.remove("pl-2");
+    barraPromedio.classList.remove("pl-2");
+  } else {
+    if (huellaReducida > 0.1) {
+      barraVerde.classList.add("pl-2");
+    } else {
+      barraVerde.classList.remove("pl-2");
+    }
+    barraAmarilla.classList.add("pl-2");
+    barraPromedio.classList.add("pl-2");
+  }
 
   // Actualizar las barras
   let nuevoPorcentaje = (huellaReducida * 100) / ghgPerCapita;
@@ -192,4 +216,7 @@ function loHareYaLoHago(id, min, max, promedio) {
   nuevoPorcentaje = (huellaFaltante * 100) / ghgPerCapita;
   barrasRoja.style["width"] = `${nuevoPorcentaje < 0 ? 0 : nuevoPorcentaje}%`;
   barrasRoja.innerHTML = `${huellaFaltante.toFixed(2)}`;
+
+  // Actualizo el alto de la barra de espacio, esa que hace que el navbar no tape ningún elemento de hasta arriba
+  document.getElementById("espacioNavbar").style.height = `${document.getElementById("navbar").clientHeight}px`;
 }

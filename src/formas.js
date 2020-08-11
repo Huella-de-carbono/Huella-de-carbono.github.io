@@ -2,25 +2,6 @@ const formas = [
   {
     categoria: "Transporte",
     cards: [
-      // {
-      //   titulo: "Evitar un vuelo largo",
-      //   resumen: "Los combustibles necesarios para un vuelo de avión son ",
-      //   resto:
-      //     "muy contaminantes. Siempre es más ecológico ir en coche, en camión o incluso en tren, aunque esto no siempre sea lo más económico, claro.",
-      //   min: 0.7,
-      //   max: 4.5,
-      //   med: 1.9,
-      //   img: "vuelo largo.png",
-      // },
-      // {
-      //   titulo: "Evitar un vuelo corto",
-      //   resumen: "Al evitar un vuelo corto también puedes ayudar a reducir ",
-      //   resto: "tu huella de carbono. Viajar en coche, camión o tren es mejor, aunque sea menos económico e incluso práctico.",
-      //   min: 0.2,
-      //   max: 1.5,
-      //   med: 0.6,
-      //   img: "vuelo corto.jpg",
-      // },
       {
         titulo: "Usar transporte público o alternativa",
         resumen: "Si tienes la oportunidad de ir en bicicleta o en ",
@@ -88,6 +69,25 @@ const formas = [
         med: 0.4,
         img: "trabajar desde casa.jpg",
       },
+      // {
+      //   titulo: "Evitar un vuelo largo",
+      //   resumen: "Los combustibles necesarios para un vuelo de avión son ",
+      //   resto:
+      //     "muy contaminantes. Siempre es más ecológico ir en coche, en camión o incluso en tren, aunque esto no siempre sea lo más económico, claro.",
+      //   min: 0.7,
+      //   max: 4.5,
+      //   med: 1.9,
+      //   img: "vuelo largo.png",
+      // },
+      // {
+      //   titulo: "Evitar un vuelo corto",
+      //   resumen: "Al evitar un vuelo corto también puedes ayudar a reducir ",
+      //   resto: "tu huella de carbono. Viajar en coche, camión o tren es mejor, aunque sea menos económico e incluso práctico.",
+      //   min: 0.2,
+      //   max: 1.5,
+      //   med: 0.6,
+      //   img: "vuelo corto.jpg",
+      // },
     ],
   },
   {
@@ -211,14 +211,13 @@ const formas = [
         img: "comprar energía renovable.jpg",
       },
       {
-        titulo: "Remodelación y renovación de la casa",
-        resumen: "Detectar qué partes de la casa están peor aisladas y reforzarlas.",
-        resto:
-          " Pero esto tiene que involucrar remodelas las paredes, quizá el techo. Es una remodelación para mejorar el aislamiento de la casa.",
-        min: 0,
-        max: 1.9,
-        med: 0.9,
-        img: "aislar la casa.jpg",
+        titulo: "Electrodomésticos más eficientes",
+        resumen: "Estufa eléctrica, refrigerador moderno, microondas de último año, etc. Todo ayuda.",
+        resto: "",
+        min: 0.01,
+        max: 0.3,
+        med: 0.1,
+        img: "estufa electrica.jpg",
       },
       {
         titulo: "Usar una bomba de calor",
@@ -240,15 +239,6 @@ const formas = [
         img: "boiler solar.jpg",
       },
       {
-        titulo: "Electrodomésticos más eficientes",
-        resumen: "Estufa eléctrica, refrigerador moderno, microondas de último año, etc. Todo ayuda.",
-        resto: "",
-        min: 0.01,
-        max: 0.3,
-        med: 0.1,
-        img: "estufa electrica.jpg",
-      },
-      {
         titulo: "Ahorrar agua caliente cuando sea posible",
         resumen: "En pleno verano, ¿para qué quieres agua caliente?",
         resto: " Es buena idea acostumbrarte a usar agua fría si el agua caliente no es estrictamente necesaria.",
@@ -266,6 +256,16 @@ const formas = [
         max: null,
         med: 0.2,
         img: "aislar el techo.jpg",
+      },
+      {
+        titulo: "Remodelación y renovación de la casa",
+        resumen: "Detectar qué partes de la casa están peor aisladas y reforzarlas.",
+        resto:
+          " Pero esto tiene que involucrar remodelas las paredes, quizá el techo. Es una remodelación para mejorar el aislamiento de la casa.",
+        min: 0,
+        max: 1.9,
+        med: 0.9,
+        img: "aislar la casa.jpg",
       },
       {
         titulo: "Vivir en una casa pequeña / compartir vivienda",
@@ -319,16 +319,16 @@ const formas = [
         med: 0.1,
         img: "reciclar.jpg",
       },
-      {
-        titulo: "Compartir bienes o servicios",
-        resumen: "Optar por servicios locales o comunitarios, compartir y reparar",
-        resto:
-          " las herramientas o bienes que se puedan, compartir la vivienda. Aunque estudios apuntan que estrategias de parejas como estas no ayudan a reducir nada, porque de todos modos el consumo es el doble, pero aún así existen otros que afirman que sí podría suponer una reducción. De cualquier forma, vale la pena intentarlo.",
-        min: 0,
-        max: 0.3,
-        med: 0.1,
-        img: "compartir bienes.jpg",
-      },
+      // {
+      //   titulo: "Compartir bienes o servicios",
+      //   resumen: "Optar por servicios locales o comunitarios, compartir y reparar",
+      //   resto:
+      //     " las herramientas o bienes que se puedan, compartir la vivienda. Aunque estudios apuntan que estrategias de parejas como estas no ayudan a reducir nada, porque de todos modos el consumo es el doble, pero aún así existen otros que afirman que sí podría suponer una reducción. De cualquier forma, vale la pena intentarlo.",
+      //   min: 0,
+      //   max: 0.3,
+      //   med: 0.1,
+      //   img: "compartir bienes.jpg",
+      // },
     ],
   },
 ];
