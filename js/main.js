@@ -15,14 +15,12 @@ formas.forEach((item, i) => {
 });
 document.getElementById("aquiVanCards").innerHTML = temp;
 
-const barrasRoja = [document.getElementById("barraRoja"), document.getElementById("barraRoja2")];
+const barrasRoja = document.getElementById("barraRoja");
 const barraAmarilla = document.getElementById("barraAmarilla");
 const barraVerde = document.getElementById("barraVerde");
 const barraPromedio = document.getElementById("barraPromedio");
 
-barrasRoja.forEach((barra) => {
-  barra.innerHTML = ghgPerCapita;
-});
+barraRoja.innerHTML = ghgPerCapita;
 
 function getCard(card, index) {
   let reduccion = "";
@@ -132,12 +130,12 @@ function loHareYaLoHago(id, min, max, promedio) {
   if (element.classList.contains("btn-secondary")) {
     huellaReducida += min;
     huellaEnDuda += max;
-    huellaFaltante -= max + min;
+    huellaFaltante -= max;
     huellaPromedio += promedio;
   } else {
     huellaReducida -= min;
     huellaEnDuda -= max;
-    huellaFaltante += max + min;
+    huellaFaltante += max;
     huellaPromedio -= promedio;
   }
 
@@ -152,30 +150,26 @@ function loHareYaLoHago(id, min, max, promedio) {
   // Actualizar el texto de resumen
   resumen.innerHTML = `Promedio de reducción: <span class="badge badge-success">${huellaPromedio.toFixed(
     2
-  )}</span> tCO2.<br>Reducción teórica máxima: <span class="badge badge-success">${(huellaReducida + huellaEnDuda).toFixed(
+  )}</span> tCO2.<br>Reducción teórica máxima: <span class="badge badge-success">${huellaEnDuda.toFixed(
     2
   )}</span> tCO2 y mínima: <span class="badge badge-${huellaReducida < 0 ? "danger" : "success"}">${huellaReducida.toFixed(2)}</span> tCO2`;
 
   // Actualizar las barras
   let nuevoPorcentaje = (huellaReducida * 100) / ghgPerCapita;
   barraVerde.style["width"] = `${nuevoPorcentaje < 0 ? 0 : nuevoPorcentaje}%`;
-  barraVerde.innerHTML = `${huellaReducida.toFixed(2)}`;
+  barraVerde.innerHTML = ` ${huellaReducida.toFixed(2)}`;
 
-  nuevoPorcentaje = (huellaEnDuda * 100) / ghgPerCapita;
+  nuevoPorcentaje = ((huellaEnDuda - huellaPromedio) * 100) / ghgPerCapita;
   barraAmarilla.style["width"] = `${nuevoPorcentaje < 0 ? 0 : nuevoPorcentaje}%`;
-  barraAmarilla.innerHTML = `${huellaEnDuda.toFixed(2)}`;
+  barraAmarilla.innerHTML = ` ${huellaEnDuda.toFixed(2)}`;
+
+  nuevoPorcentaje = ((huellaPromedio - huellaReducida) * 100) / ghgPerCapita;
+  barraPromedio.style["width"] = `${nuevoPorcentaje < 0 ? 0 : nuevoPorcentaje}%`;
+  barraPromedio.innerHTML = ` ${huellaPromedio.toFixed(2)}`;
 
   nuevoPorcentaje = (huellaFaltante * 100) / ghgPerCapita;
-  barrasRoja[0].style["width"] = `${nuevoPorcentaje < 0 ? 0 : nuevoPorcentaje}%`;
-  barrasRoja[0].innerHTML = `${huellaFaltante.toFixed(2)}`;
-
-  nuevoPorcentaje = ((ghgPerCapita - huellaPromedio) * 100) / ghgPerCapita;
-  barrasRoja[1].style["width"] = `${nuevoPorcentaje < 0 ? 0 : nuevoPorcentaje}%`;
-  barrasRoja[1].innerHTML = `${(ghgPerCapita - huellaPromedio).toFixed(2)}`;
-
-  nuevoPorcentaje = (huellaPromedio * 100) / ghgPerCapita;
-  barraPromedio.style["width"] = `${nuevoPorcentaje < 0 ? 0 : nuevoPorcentaje}%`;
-  barraPromedio.innerHTML = `${huellaPromedio.toFixed(2)}`;
+  barrasRoja.style["width"] = `${nuevoPorcentaje < 0 ? 0 : nuevoPorcentaje}%`;
+  barrasRoja.innerHTML = `${huellaFaltante.toFixed(2)}`;
 
   // Actualizar el botón presionado
   const splitted = id.split("-");
