@@ -2,25 +2,25 @@ const formas = [
   {
     categoria: "Transporte",
     cards: [
-      {
-        titulo: "Evitar un vuelo largo",
-        resumen: "Los combustibles necesarios para un vuelo de avión son ",
-        resto:
-          "muy contaminantes. Siempre es más ecológico ir en coche, en camión o incluso en tren, aunque esto no siempre sea lo más económico, claro.",
-        min: 0.7,
-        max: 4.5,
-        med: 1.9,
-        img: "vuelo largo.png",
-      },
-      {
-        titulo: "Evitar un vuelo corto",
-        resumen: "Al evitar un vuelo corto también puedes ayudar a reducir ",
-        resto: "tu huella de carbono. Viajar en coche, camión o tren es mejor, aunque sea menos económico e incluso práctico.",
-        min: 0.2,
-        max: 1.5,
-        med: 0.6,
-        img: "vuelo corto.jpg",
-      },
+      // {
+      //   titulo: "Evitar un vuelo largo",
+      //   resumen: "Los combustibles necesarios para un vuelo de avión son ",
+      //   resto:
+      //     "muy contaminantes. Siempre es más ecológico ir en coche, en camión o incluso en tren, aunque esto no siempre sea lo más económico, claro.",
+      //   min: 0.7,
+      //   max: 4.5,
+      //   med: 1.9,
+      //   img: "vuelo largo.png",
+      // },
+      // {
+      //   titulo: "Evitar un vuelo corto",
+      //   resumen: "Al evitar un vuelo corto también puedes ayudar a reducir ",
+      //   resto: "tu huella de carbono. Viajar en coche, camión o tren es mejor, aunque sea menos económico e incluso práctico.",
+      //   min: 0.2,
+      //   max: 1.5,
+      //   med: 0.6,
+      //   img: "vuelo corto.jpg",
+      // },
       {
         titulo: "Usar transporte público o alternativa",
         resumen: "Si tienes la oportunidad de ir en bicicleta o en ",
@@ -34,7 +34,7 @@ const formas = [
         titulo: "Compartir transporte privado",
         resumen: "Si compartes tu coche o le dices a un conocido que te ",
         resto:
-          "lleve en su coche a un lugar a donde él también va en vez de usar tu coche para ti solito. Y quién sabe, quizá incluso te ayude a no gastar tanto dinero.",
+          "lleve en su coche a un lugar a donde él también se dirige, quizá incluso te ayude a ahorrar algo de dinero si comparten las cuentas.",
         min: 0,
         max: 1,
         med: 0.3,
@@ -44,7 +44,7 @@ const formas = [
         titulo: "Conducir eficientemente",
         resumen: "No, quizá no lo estés haciendo. Lee las siguientes ",
         resto:
-          "recomendaciones para manejar eficientemente: <a href='https://www.conduccioneficiente.cl' target='blank'>Conducción eficiente</a>. Ahí se muestran muchos tips para ahorrar combustible. Te ayudará también a ahorrar dinero.",
+          "recomendaciones para manejar eficientemente antes de seleccionar que ya haces esto: <a href='https://www.conduccioneficiente.cl' target='blank'>Conducción eficiente</a>. Ahí se muestran muchos tips para ahorrar combustible. Te ayudará también a ahorrar dinero.",
         min: 0.01,
         max: 1.46,
         med: 0.3,

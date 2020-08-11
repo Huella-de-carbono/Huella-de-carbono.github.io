@@ -1,9 +1,9 @@
-var temp = "";
+let temp = "";
 const ghgPerCapita = 5.58;
-var huellaFaltante = ghgPerCapita;
-var huellaReducida = 0;
-var huellaEnDuda = 0;
-var huellaPromedio = 0;
+let huellaFaltante = ghgPerCapita;
+let huellaReducida = 0;
+let huellaEnDuda = 0;
+let huellaPromedio = 0;
 
 $('[data-toggle="tooltip"]').tooltip();
 
@@ -15,16 +15,19 @@ formas.forEach((item, i) => {
 });
 document.getElementById("aquiVanCards").innerHTML = temp;
 
-const barraRoja = document.getElementById("barraRoja");
+const barrasRoja = [document.getElementById("barraRoja"), document.getElementById("barraRoja2")];
 const barraAmarilla = document.getElementById("barraAmarilla");
 const barraVerde = document.getElementById("barraVerde");
+const barraPromedio = document.getElementById("barraPromedio");
 
-barraRoja.innerHTML = ghgPerCapita;
+barrasRoja.forEach((barra) => {
+  barra.innerHTML = ghgPerCapita;
+});
 
 function getCard(card, index) {
-  var reduccion = "";
+  let reduccion = "";
 
-  var restoTexto = "";
+  let restoTexto = "";
   if (card.min == null && card.max == null) {
     reduccion = `
     <div class="d-flex w-100">
@@ -112,7 +115,7 @@ function getCard(card, index) {
 
 // Esta función hace que el botón expandir cambie o no de tamaño
 function expandir(id) {
-  var btn = document.getElementById(id);
+  let btn = document.getElementById(id);
   console.log(btn.innerHTML.trim());
   if (btn.innerHTML.trim() == "Expandir") {
     btn.innerHTML = "Mostrar menos";
@@ -123,7 +126,9 @@ function expandir(id) {
 
 function loHareYaLoHago(id, min, max, promedio) {
   const element = document.getElementById(id);
+  const resumen = document.getElementById("resumen");
 
+  // Si el botón está gris, entonces sumas, si no, se resta, porque se entiende que lo des-seleccionó
   if (element.classList.contains("btn-secondary")) {
     huellaReducida += min;
     huellaEnDuda += max;
@@ -136,7 +141,23 @@ function loHareYaLoHago(id, min, max, promedio) {
     huellaPromedio -= promedio;
   }
 
-  var nuevoPorcentaje = (huellaReducida * 100) / ghgPerCapita;
+  // Si la huella faltante es menor a 0, entonces cambiar el título
+  if (huellaFaltante <= 0) {
+    document.getElementById("navbar-title").innerHTML =
+      "¡Has arrazado con tu huella de carbono! Aún así, toma en cuenta el margen de error posible.";
+  } else {
+    document.getElementById("navbar-title").innerHTML = "Toneladas de CO2 que emites al año:";
+  }
+
+  // Actualizar el texto de resumen
+  resumen.innerHTML = `Promedio de reducción: <span class="badge badge-success">${huellaPromedio.toFixed(
+    2
+  )}</span> tCO2.<br>Reducción teórica máxima: <span class="badge badge-success">${(huellaReducida + huellaEnDuda).toFixed(
+    2
+  )}</span> tCO2 y mínima: <span class="badge badge-${huellaReducida < 0 ? "danger" : "success"}">${huellaReducida.toFixed(2)}</span> tCO2`;
+
+  // Actualizar las barras
+  let nuevoPorcentaje = (huellaReducida * 100) / ghgPerCapita;
   barraVerde.style["width"] = `${nuevoPorcentaje < 0 ? 0 : nuevoPorcentaje}%`;
   barraVerde.innerHTML = `${huellaReducida.toFixed(2)}`;
 
@@ -145,9 +166,18 @@ function loHareYaLoHago(id, min, max, promedio) {
   barraAmarilla.innerHTML = `${huellaEnDuda.toFixed(2)}`;
 
   nuevoPorcentaje = (huellaFaltante * 100) / ghgPerCapita;
-  barraRoja.style["width"] = `${nuevoPorcentaje < 0 ? 0 : nuevoPorcentaje}%`;
-  barraRoja.innerHTML = `${huellaFaltante.toFixed(2)}`;
+  barrasRoja[0].style["width"] = `${nuevoPorcentaje < 0 ? 0 : nuevoPorcentaje}%`;
+  barrasRoja[0].innerHTML = `${huellaFaltante.toFixed(2)}`;
 
+  nuevoPorcentaje = ((ghgPerCapita - huellaPromedio) * 100) / ghgPerCapita;
+  barrasRoja[1].style["width"] = `${nuevoPorcentaje < 0 ? 0 : nuevoPorcentaje}%`;
+  barrasRoja[1].innerHTML = `${(ghgPerCapita - huellaPromedio).toFixed(2)}`;
+
+  nuevoPorcentaje = (huellaPromedio * 100) / ghgPerCapita;
+  barraPromedio.style["width"] = `${nuevoPorcentaje < 0 ? 0 : nuevoPorcentaje}%`;
+  barraPromedio.innerHTML = `${huellaPromedio.toFixed(2)}`;
+
+  // Actualizar el botón presionado
   const splitted = id.split("-");
   const otroBtn = document.getElementById(`${splitted[0]}-${splitted[1]}-${splitted[2] == 0 ? 1 : 0}`);
 

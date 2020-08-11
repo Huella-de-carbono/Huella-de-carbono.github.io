@@ -36,7 +36,7 @@
     <meta property="twitter:title" content="Web interactiva para reducir tu huella de carbono" />
     <meta
       property="twitter:description"
-      content="Selecciona las cosas que puedes o quieres hacer, ¡y verás cómo tu barra de huella de carbono disminuye! "
+      content="Selecciona las cosas que puedes o quieres hacer, ¡y verás cómo tu barra de huella de carbono desaparece! "
     />
     <meta
       property="twitter:image"
@@ -45,7 +45,7 @@
   </head>
   <body>
     <div class="d-flex justify-content-center flex-column align-items-right fixed-top custom-navbar">
-      <h5 class="ml-4" style="color: black; white-space: nowrap;">
+      <h5 class="ml-4" style="color: black; white-space: nowrap;" id="navbar-title">
         Toneladas de CO2 que emites al año:
       </h5>
       <div style="width: 100%;">
@@ -60,12 +60,12 @@
             id="barraRoja"
           ></div>
           <div
-            class="progress-bar bg-warning"
+            class="progress-bar progress-bar-animated progress-bar-striped"
             role="progressbar"
-            style="width: 0%; color: black;"
+            style="width: 0%; color: black; background-color: #b0de1d;"
             data-toggle="tooltip"
             data-placement="bottom"
-            title="Según los estudios más optimistas, puede que logres reducir todo esto también."
+            title="Según los estudios más optimistas, puede que logres reducir algo entre este rango también."
             id="barraAmarilla"
           ></div>
           <div
@@ -79,6 +79,29 @@
           ></div>
         </div>
       </div>
+      <div style="width: 100%;">
+        <div class="progress border border-dark ml-1 mr-1" style="height: 30px; cursor: help; font-weight: bold;">
+          <div
+            class="progress-bar bg-danger progress-bar-striped progress-bar-animated"
+            role="progressbar"
+            style="width: 100%;"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Con los cambios que te has comprometido a realizar, difícilmente reducirás más que este límite."
+            id="barraRoja2"
+          ></div>
+          <div
+            class="progress-bar bg-success progress-bar-striped progress-bar-animated"
+            role="progressbar"
+            style="width: 0%;"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Esto es el promedio de lo que se espera que puedas reducir."
+            id="barraPromedio"
+          ></div>
+        </div>
+      </div>
+      <h5 class="ml-4 mt-2" style="color: black; white-space: nowrap;" id="resumen"></h5>
     </div>
 
     <div class="jumbotron mt-5">
