@@ -10,6 +10,7 @@ const formas = [
         max: 1,
         med: 0.8,
         img: "transporte publico.jpg",
+        id: 0,
       },
       {
         titulo: "Compartir transporte privado",
@@ -20,6 +21,7 @@ const formas = [
         max: 1,
         med: 0.3,
         img: "compartir transporte.jpg",
+        id: 1,
       },
       {
         titulo: "Conducir eficientemente",
@@ -30,6 +32,7 @@ const formas = [
         max: 1.46,
         med: 0.3,
         img: "conducir eficientemente.jpg",
+        id: 2,
       },
       {
         titulo: "Cambiarse a un híbrido",
@@ -40,6 +43,8 @@ const formas = [
         max: 3.1,
         med: 0.7,
         img: "coche híbrido.jpg",
+        id: 3,
+        desabilita: [4, 5],
       },
       {
         titulo: "Carro 100% eléctrico",
@@ -50,6 +55,8 @@ const formas = [
         max: 5.4,
         med: 2,
         img: "coche eléctrico.jpg",
+        id: 4,
+        desabilita: [3, 5],
       },
       {
         titulo: "Vivir sin coche",
@@ -59,6 +66,8 @@ const formas = [
         max: 3.6,
         med: 0,
         img: "vivir sin carro.jpg",
+        id: 5,
+        desabilita: [3, 4],
       },
       {
         titulo: "Trabajar desde casa",
@@ -68,6 +77,7 @@ const formas = [
         max: 1.4,
         med: 0.4,
         img: "trabajar desde casa.jpg",
+        id: 6,
       },
       {
         titulo: "Evitar un vuelo largo",
@@ -78,6 +88,7 @@ const formas = [
         max: 4.5,
         med: 1.9,
         img: "vuelo largo.png",
+        id: 7,
       },
       {
         titulo: "Evitar un vuelo corto",
@@ -87,6 +98,7 @@ const formas = [
         max: 1.5,
         med: 0.6,
         img: "vuelo corto.jpg",
+        id: 8,
       },
     ],
   },
@@ -102,16 +114,19 @@ const formas = [
         max: 1.3,
         med: 0.3,
         img: "dieta saludable.jpg",
+        id: 9,
       },
       {
         titulo: "Dieta vegana",
         resumen: "Nada de producto animal. Al contrario de",
         resto:
-          " lo que muchos piensan, los nutricionistas no han encontrado que una dieta vegana repercuta negativamente en la salud, pero solo si se sigue correctamente. Si planeas intentar esto, es recomendable acudir a un profesional.",
+          " lo que muchos piensan, los nutricionistas no han encontrado que una dieta vegana repercuta negativamente en la salud, pero solo si se sigue correctamente. Si planeas intentar esto, es recomendable acudir con un profesional.",
         min: 0.4,
         max: 2.1,
         med: 0.9,
         img: "dieta vegana.jpg",
+        id: 10,
+        desabilita: [11, 13],
       },
       {
         titulo: "Dieta vegetariana",
@@ -121,16 +136,20 @@ const formas = [
         max: 1.5,
         med: 0.5,
         img: "dieta vegetariana.jpg",
+        id: 11,
+        desabilita: [10, 12, 13],
       },
       {
         titulo: "Insectos como fuente de proteína",
-        resumen: "Los insectos pueden proporcionar hasta 4 ",
+        resumen: "Sustituir la carne por insectos. Los insectos ",
         resto:
-          "veces la cantidad de proteína que la carne, y liberan hasta <a href='https://comprarinsectoscomestibles.es/comer-insectos-comestibles-frenar-cambio-climatico/' target='blank'>2850 veces menos CO2</a> que la carne de vaca.<br>Por ejemplo, <a href='https://comprarinsectoscomestibles.es/insectos-comestibles-una-dieta-para-el-futuro-hoy/' target='blank'>si consumiéramos 100gms de  grillos nos aportarían 60 gms de proteína</a>, mientras que un filete de vacuno sólo 20gms.  A su vez nos daría el 20% de la fibra que necesitaríamos diariamente.<br>Existen proyectos como el <a href='https://thehiveexplorer.com/' target='blank'>Hive Explorer</a> que te ayudarán a generar tus propios insectos 100% comestibles. ¡No les tengas miedo, saben muy bien!",
+          "pueden proporcionar hasta 4 veces la cantidad de proteína que la carne, y liberan hasta <a href='https://comprarinsectoscomestibles.es/comer-insectos-comestibles-frenar-cambio-climatico/' target='blank'>2850 veces menos CO2</a> que la carne de vaca.<br>Por ejemplo, <a href='https://comprarinsectoscomestibles.es/insectos-comestibles-una-dieta-para-el-futuro-hoy/' target='blank'>si consumiéramos 100gms de  grillos nos aportarían 60 gms de proteína</a>, mientras que un filete de vacuno sólo 20gms.  A su vez nos daría el 20% de la fibra que necesitaríamos diariamente.<br>Existen proyectos como el <a href='https://thehiveexplorer.com/' target='blank'>Hive Explorer</a> que te ayudarán a generar tus propios insectos 100% comestibles. ¡No les tengas miedo, saben muy bien!",
         min: 0.01,
         max: 1.5,
         med: 0.5,
         img: "comer insectos.jpg",
+        id: 12,
+        desabilita: [11, 13],
       },
       {
         titulo: "No comer carne de vaca",
@@ -141,6 +160,8 @@ const formas = [
         max: 1.25,
         med: 0.5,
         img: "no comer carne de vaca.jpg",
+        id: 13,
+        desabilita: [10, 11, 12],
       },
       {
         titulo: "Consumir productos regionales o locales",
@@ -150,6 +171,7 @@ const formas = [
         max: 1.1,
         med: 0.4,
         img: "productos regionales o locales.jpg",
+        id: 14,
       },
       {
         titulo: "Consumir productos de temporada",
@@ -160,6 +182,7 @@ const formas = [
         max: 0.4,
         med: 0.2,
         img: "productos de temporada.jpg",
+        id: 15,
       },
       {
         titulo: "Producir tus propios cultivos o comida",
@@ -169,6 +192,7 @@ const formas = [
         max: null,
         med: 0.4,
         img: "propia comida.jpg",
+        id: 16,
       },
       {
         titulo: "Pedir comida ecológica en restaurantes",
@@ -179,6 +203,7 @@ const formas = [
         max: null,
         med: 0.3,
         img: "restaurante comida buena.jpg",
+        id: 17,
       },
       {
         titulo: "Menos comida procesada / alcohol",
@@ -188,6 +213,7 @@ const formas = [
         max: null,
         med: 0.2,
         img: "no alcohol.jpg",
+        id: 18,
       },
     ],
   },
@@ -195,22 +221,26 @@ const formas = [
     categoria: "El hogar",
     cards: [
       {
-        titulo: "Generar tu propia energía renovable",
+        titulo: "Generar tu propia energía sostenible",
         resumen: "Compra unos paneles solares. Es muy bueno",
         resto: " para reducir tu huella de carbono.",
         min: 0.1,
         max: 4.8,
         med: 1.3,
         img: "propia energía renovable.jpg",
+        id: 19,
+        desabilita: [20],
       },
       {
-        titulo: "Comprar energía renovable",
+        titulo: "Comprar energía sostenible",
         resumen: "Si en tu localidad existe un servicio que ofrezca",
-        resto: " energía renovable, es buena idea comprarles esa valiosa energía.",
+        resto: " energía sostenible, es buena idea comprarles esa valiosa energía.",
         min: 0.3,
         max: 2.5,
         med: 1.5,
         img: "comprar energía renovable.jpg",
+        id: 20,
+        desabilita: [19],
       },
       {
         titulo: "Electrodomésticos más eficientes",
@@ -220,6 +250,7 @@ const formas = [
         max: 0.3,
         med: 0.1,
         img: "estufa electrica.jpg",
+        id: 21,
       },
       {
         titulo: "Usar una bomba de calor",
@@ -229,15 +260,19 @@ const formas = [
         max: 1.3,
         med: 0.8,
         img: "bomba de calor.jpg",
+        id: 22,
+        desabilita: [23],
       },
       {
         titulo: "Usar un boiler solar o similar",
-        resumen: "Calentar tu casa o agua con métodos renovables",
-        resto: " (pero si usarás una bomba de calor, no selecciones este, sino el de arriba).",
+        resumen: "Calentar tu casa o agua con otros métodos sostenibles.",
+        resto: "",
         min: 0.1,
         max: 1.3,
         med: 0.7,
         img: "boiler solar.jpg",
+        id: 23,
+        desabilita: [22],
       },
       {
         titulo: "Ahorrar agua caliente cuando sea posible",
@@ -248,6 +283,7 @@ const formas = [
         max: 0.6,
         med: 0.3,
         img: "agua caliente.jpg",
+        id: 24,
       },
       {
         titulo: "Mejor aislamiento",
@@ -258,6 +294,8 @@ const formas = [
         max: null,
         med: 0.2,
         img: "aislar el techo.jpg",
+        id: 25,
+        desabilita: [26],
       },
       {
         titulo: "Remodelación y renovación de la casa",
@@ -268,6 +306,8 @@ const formas = [
         max: 1.9,
         med: 0.9,
         img: "aislar la casa.jpg",
+        id: 26,
+        desabilita: [25],
       },
       {
         titulo: "Vivir en una casa pequeña / compartir vivienda",
@@ -277,6 +317,7 @@ const formas = [
         max: 1,
         med: 0.4,
         img: "casa pequeña.jpg",
+        id: 27,
       },
       {
         titulo: "¡Vivir en una casa pasiva!",
@@ -287,6 +328,7 @@ const formas = [
         max: 0.9,
         med: 0.5,
         img: "casa pasiva.jpg",
+        id: 28,
       },
     ],
   },
@@ -301,6 +343,7 @@ const formas = [
         max: 2.4,
         med: 0.8,
         img: "no mascotas.jpg",
+        id: 29,
       },
       {
         titulo: "Menos compras y/o herramientas más duraderas",
@@ -310,6 +353,7 @@ const formas = [
         max: 0.35,
         med: 0.15,
         img: "menos productos.jpg",
+        id: 30,
       },
       {
         titulo: "Reciclar",
@@ -320,17 +364,8 @@ const formas = [
         max: 0.3,
         med: 0.1,
         img: "reciclar.jpg",
+        id: 31,
       },
-      // {
-      //   titulo: "Compartir bienes o servicios",
-      //   resumen: "Optar por servicios locales o comunitarios, compartir y reparar",
-      //   resto:
-      //     " las herramientas o bienes que se puedan, compartir la vivienda. Aunque estudios apuntan que estrategias de parejas como estas no ayudan a reducir nada, porque de todos modos el consumo es el doble, pero aún así existen otros que afirman que sí podría suponer una reducción. De cualquier forma, vale la pena intentarlo.",
-      //   min: 0,
-      //   max: 0.3,
-      //   med: 0.1,
-      //   img: "compartir bienes.jpg",
-      // },
     ],
   },
 ];

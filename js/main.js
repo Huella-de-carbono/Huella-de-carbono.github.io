@@ -15,10 +15,10 @@ $.get(
 
 $('[data-toggle="tooltip"]').tooltip();
 
-formas.forEach((item, i) => {
+formas.forEach((item) => {
   temp = temp + `<h3 class="ml-2 mt-3">${item.categoria}</h3>`;
-  item.cards.forEach((card, j) => {
-    temp = temp + getCard(card, `${i}-${j}`);
+  item.cards.forEach((card) => {
+    temp = temp + getCard(card, card.id);
   });
 });
 document.getElementById("aquiVanCards").innerHTML = temp;
@@ -103,7 +103,9 @@ function getCard(card, index) {
             class="btn btn-secondary btn-outline-dark"
             style="height: 90px; width: 90px; color: white;"
             id="${index}-0"
-            onclick="loHareYaLoHago('${index}-0', ${card.min == null ? card.med : card.min}, ${card.max == null ? 0 : card.max}, ${card.med})"
+            onclick="loHareYaLoHago('${index}-0', ${card.min == null ? card.med : card.min}, ${card.max == null ? 0 : card.max}, ${
+    card.med
+  }, ${JSON.stringify(card.desabilita)})"
           >
             Haré esto
           </button>
@@ -112,7 +114,9 @@ function getCard(card, index) {
             class="btn btn-secondary btn-outline-dark"
             style="height: 90px; width: 90px; color: white;"
             id="${index}-1"
-            onclick="loHareYaLoHago('${index}-1', ${card.min == null ? card.med : card.min}, ${card.max == null ? 0 : card.max}, ${card.med})"
+            onclick="loHareYaLoHago('${index}-1', ${card.min == null ? card.med : card.min}, ${card.max == null ? 0 : card.max}, ${
+    card.med
+  },${JSON.stringify(card.desabilita)})"
           >
             Ya hago esto
           </button>
@@ -133,13 +137,13 @@ function expandir(id) {
   }
 }
 
-function loHareYaLoHago(id, min, max, promedio) {
+function loHareYaLoHago(id, min, max, promedio, desabilita) {
   const element = document.getElementById(id);
   const resumen = document.getElementById("resumen");
 
   // Actualizar el botón presionado
   const splitted = id.split("-");
-  const otroBtn = document.getElementById(`${splitted[0]}-${splitted[1]}-${splitted[2] == 0 ? 1 : 0}`);
+  const otroBtn = document.getElementById(`${splitted[0]}-${splitted[1] == 0 ? 1 : 0}`);
 
   if (element.classList.contains("btn-secondary")) {
     element.classList.replace("btn-secondary", "btn-success");
@@ -147,6 +151,15 @@ function loHareYaLoHago(id, min, max, promedio) {
   } else {
     element.classList.replace("btn-success", "btn-secondary");
     element.classList.replace("btn-outline-white", "btn-outline-dark");
+  }
+
+  if (desabilita) {
+    for (id of desabilita) {
+      document.getElementById(`${id}-0`).setAttributeNode(document.createAttribute("disabled"));
+      document.getElementById(`${id}-1`).setAttributeNode(document.createAttribute("disabled"));
+      document.getElementById(`${id}-0`).classList.remove("btn-outline-dark");
+      document.getElementById(`${id}-1`).classList.remove("btn-outline-dark");
+    }
   }
 
   // Si el otro botón está verde, no sumar ni nada, solo deshabilitar el otro
@@ -165,8 +178,18 @@ function loHareYaLoHago(id, min, max, promedio) {
       huellaEnDuda -= max;
       huellaFaltante += max;
       huellaPromedio -= promedio;
+
+      if (desabilita) {
+        for (id of desabilita) {
+          document.getElementById(`${id}-0`).removeAttribute("disabled");
+          document.getElementById(`${id}-1`).removeAttribute("disabled");
+          document.getElementById(`${id}-0`).classList.add("btn-outline-dark");
+          document.getElementById(`${id}-1`).classList.add("btn-outline-dark");
+        }
+      }
     }
-    // Esto es porque a veeces las restas y sumas dan decimales muy pequeños y toFixed entrega -0.00
+
+    // Esto es porque a veces las restas y sumas dan decimales muy pequeños y toFixed entrega -0.00 (?)
     if (parseFloat(huellaPromedio.toFixed(2)) == 0) huellaPromedio = 0;
     if (parseFloat(huellaReducida.toFixed(2)) == 0) huellaReducida = 0;
     if (parseFloat(huellaEnDuda.toFixed(2)) == 0) huellaEnDuda = 0;
@@ -174,18 +197,29 @@ function loHareYaLoHago(id, min, max, promedio) {
   }
 
   // Si la huella faltante es menor a 0, entonces cambiar el título
-  if (huellaFaltante <= 0) {
-    document.getElementById("navbar-title").innerHTML =
-      "¡Excelente! ¡Ya has eliminado tu huella de carbono! Aun así, toma en cuenta el margen de error posible.";
+  const mensaje = "¡Excelente! La barra roja ha desaparecido.";
+  message: if (huellaFaltante <= 0) {
+    if (document.getElementById("navbar-title").innerHTML == mensaje) break message;
+    document.getElementById("navbar-title").innerHTML = mensaje;
     setTimeout(() => {
-      $("#barraAmarilla").tooltip("show");
-      setTimeout(() => $("#barraAmarilla").tooltip("hide"), 3500);
+      $("#barraPromedio").tooltip("show");
+      setTimeout(() => {
+        $("#barraPromedio").tooltip("hide");
+        $("#barraAmarilla").tooltip("show");
+        setTimeout(() => {
+          $("#barraAmarilla").tooltip("hide");
+          if (huellaReducida > 0) {
+            $("#barraVerde").tooltip("show");
+            setTimeout(() => $("#barraVerde").tooltip("hide"), 3500);
+          }
+        }, 3500);
+      }, 3500);
     }, 700);
   } else {
     document.getElementById("navbar-title").innerHTML = "Toneladas de CO2 que emites al año:";
   }
 
-  // Actualizar el texto de resumen
+  // Actualizar el texto que aparece debajo de las barras, que dice el resumen de lo que vas a descontaminar
   resumen.innerHTML =
     huellaFaltante != ghgPerCapita
       ? `Reducción en promedio: <span class="badge badge-success" data-toggle="tooltip" data-placement="bottom" title="">${huellaPromedio.toFixed(
