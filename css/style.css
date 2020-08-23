@@ -7,3 +7,10 @@
   padding-top: 1rem;
   border-bottom: 2px solid black;
 }
+
+.country i {
+  background: url(https://dl.dropboxusercontent.com/s/izcyieh1iatr4n5/flags.png) no-repeat;
+  display: inline-block;
+  width: 16px;
+  height: 11px;
+}

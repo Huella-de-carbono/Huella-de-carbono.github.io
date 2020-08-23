@@ -1,9 +1,17 @@
 let temp = "";
-const ghgPerCapita = 5.58;
+const ghgPerCapita = 5.58; // Esto es un dato para México únicamente. Cada país tiene un valor diferente, lo cual implementaré en el futuro
 let huellaFaltante = ghgPerCapita;
 let huellaReducida = 0;
 let huellaEnDuda = 0;
 let huellaPromedio = 0;
+
+$.get(
+  "https://ipinfo.io?token=b6b18971a12194",
+  function (response) {
+    console.log(response.country);
+  },
+  "jsonp"
+);
 
 $('[data-toggle="tooltip"]').tooltip();
 
@@ -74,7 +82,7 @@ function getCard(card, index) {
 
   return `
     <div class="list-group-item">
-      <div class="media">
+      <div class="media flex-md-row flex-column align-items-center align-items-md-start">
         <img
           src="./src/${card.img}"
           class="mr-3"
@@ -82,14 +90,14 @@ function getCard(card, index) {
           style="height: 90px; width: 90px; border-radius: 20px;"
         />
         <div class="media-body">
-          <h3 class="mb-1">${card.titulo}</h3>
-          <p class="mb-1" style="font-size: 1.2rem;">
+          <h3 class="mb-1 text-center text-md-left">${card.titulo}</h3>
+          <p class="mb-1 text-center text-md-left" style="font-size: 1.2rem;">
             ${card.resumen}
             ${restoTexto}
           </p>
           ${reduccion}
         </div>
-        <div class="btn-group ml-3" role="group" style="height: 100%;">
+        <div class="btn-group ml-0 ml-sm-0 ml-md-3 ml-lg-3 ml-xl-3 mt-3 mt-sm-3 mt-md-0 mt-lg-0 mt-xl-0" role="group" style="height: 100%;">
           <button
             type="button"
             class="btn btn-secondary btn-outline-dark"
@@ -144,6 +152,7 @@ function loHareYaLoHago(id, min, max, promedio) {
   // Si el otro botón está verde, no sumar ni nada, solo deshabilitar el otro
   if (otroBtn.classList.contains("btn-success")) {
     otroBtn.classList.replace("btn-success", "btn-secondary");
+    otroBtn.classList.replace("btn-outline-white", "btn-outline-dark");
   } else {
     // Si el otro estaba apagado, entonces sumar o restar a las variables
     if (element.classList.contains("btn-success")) {
@@ -167,7 +176,11 @@ function loHareYaLoHago(id, min, max, promedio) {
   // Si la huella faltante es menor a 0, entonces cambiar el título
   if (huellaFaltante <= 0) {
     document.getElementById("navbar-title").innerHTML =
-      "¡Has arrazado con tu huella de carbono! Aun así, toma en cuenta el margen de error posible.";
+      "¡Excelente! ¡Ya has eliminado tu huella de carbono! Aun así, toma en cuenta el margen de error posible.";
+    setTimeout(() => {
+      $("#barraAmarilla").tooltip("show");
+      setTimeout(() => $("#barraAmarilla").tooltip("hide"), 3500);
+    }, 700);
   } else {
     document.getElementById("navbar-title").innerHTML = "Toneladas de CO2 que emites al año:";
   }
@@ -220,3 +233,40 @@ function loHareYaLoHago(id, min, max, promedio) {
   // Actualizo el alto de la barra de espacio, esa que hace que el navbar no tape ningún elemento de hasta arriba
   document.getElementById("espacioNavbar").style.height = `${document.getElementById("navbar").clientHeight}px`;
 }
+
+(function ($) {
+  // size = flag size + spacing
+  var default_size = {
+    w: 20,
+    h: 15,
+  };
+
+  function calcPos(letter, size) {
+    return -(letter.toLowerCase().charCodeAt(0) - 97) * size;
+  }
+
+  $.fn.setFlagPosition = function (iso, size) {
+    size || (size = default_size);
+
+    var x = calcPos(iso[1], size.w),
+      y = calcPos(iso[0], size.h);
+
+    return $(this).css("background-position", [x, "px ", y, "px"].join(""));
+  };
+})(jQuery);
+
+// USAGE:
+
+(function ($) {
+  $(function () {
+    var $target = $(".country");
+
+    // on load:
+    // $target.find("i").setFlagPosition("es");
+
+    $("select").change(function () {
+      $target.find("i").setFlagPosition(this.value);
+      // $target.find("b").text($(this).find(":selected").text());
+    });
+  });
+})(jQuery);
