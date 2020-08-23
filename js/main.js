@@ -85,7 +85,7 @@ function getCard(card, index) {
       <div class="media flex-md-row flex-column align-items-center align-items-md-start">
         <img
           src="./src/${card.img}"
-          class="mr-3"
+          class="mr-0 mr-sm-0 mr-md-3 mr-lg-3 mr-xl-3"
           alt="..."
           style="height: 90px; width: 90px; border-radius: 20px;"
         />
