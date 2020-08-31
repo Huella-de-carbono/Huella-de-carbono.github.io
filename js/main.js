@@ -1,5 +1,4 @@
-let temp = "";
-const ghgPerCapita = 5.58; // Esto es un dato para México únicamente. Cada país tiene un valor diferente, lo cual implementaré en el futuro
+let ghgPerCapita = 6.27; // Esto es un dato para México únicamente. Cada país tiene un valor diferente, lo cual implementaré en el futuro
 let huellaFaltante = ghgPerCapita;
 let huellaReducida = 0;
 let huellaEnDuda = 0;
@@ -8,20 +7,28 @@ let huellaPromedio = 0;
 $.get(
   "https://ipinfo.io?token=b6b18971a12194",
   function (response) {
-    console.log(response.country);
+    console.log();
+    ghgPerCapita = gpg_percapita_list[response.country].emissions || 6.27; // Esta es la media mundial
+    huellaFaltante = ghgPerCapita;
+    document.getElementById("navbar-title").innerHTML = `Toneladas de CO2 que emites al año en ${gpg_percapita_list[response.country].name}:`;
+    loadAll();
   },
   "jsonp"
 );
 
 $('[data-toggle="tooltip"]').tooltip();
 
-formas.forEach((item) => {
-  temp = temp + `<h3 class="ml-2 mt-3">${item.categoria}</h3>`;
-  item.cards.forEach((card) => {
-    temp = temp + getCard(card, card.id);
+function loadAll() {
+  let temp = "";
+  formas.forEach((item) => {
+    temp = temp + `<h3 class="ml-2 mt-3">${item.categoria}</h3>`;
+    item.cards.forEach((card) => {
+      temp = temp + getCard(card, card.id);
+    });
   });
-});
-document.getElementById("aquiVanCards").innerHTML = temp;
+  document.getElementById("aquiVanCards").innerHTML = temp;
+  barraRoja.innerHTML = ghgPerCapita;
+}
 
 // Esto igual el espacio del navbar flotante con el espacio de arriba
 document.getElementById("espacioNavbar").style.height = `${document.getElementById("navbar").clientHeight}px`;
@@ -30,8 +37,6 @@ const barrasRoja = document.getElementById("barraRoja");
 const barraAmarilla = document.getElementById("barraAmarilla");
 const barraVerde = document.getElementById("barraVerde");
 const barraPromedio = document.getElementById("barraPromedio");
-
-barraRoja.innerHTML = ghgPerCapita;
 
 function getCard(card, index) {
   let reduccion = "";
@@ -84,7 +89,7 @@ function getCard(card, index) {
     <div class="list-group-item">
       <div class="media flex-md-row flex-column align-items-center align-items-md-start">
         <img
-          src="./src/${card.img}"
+          src="./src/miniaturas/${card.img}"
           class="mr-0 mr-sm-0 mr-md-3 mr-lg-3 mr-xl-3"
           alt="..."
           style="height: 90px; width: 90px; border-radius: 20px;"
