@@ -1,20 +1,23 @@
-let ghgPerCapita = 6.27; // Esto es un dato para México únicamente. Cada país tiene un valor diferente, lo cual implementaré en el futuro
+let ghgPerCapita = 6.27;
 let huellaFaltante = ghgPerCapita;
 let huellaReducida = 0;
 let huellaEnDuda = 0;
 let huellaPromedio = 0;
 
-$.get(
-  "https://ipinfo.io?token=b6b18971a12194",
-  function (response) {
-    console.log();
-    ghgPerCapita = gpg_percapita_list[response.country].emissions || 6.27; // Esta es la media mundial
-    huellaFaltante = ghgPerCapita;
-    document.getElementById("navbar-title").innerHTML = `Toneladas de CO2 que emites al año en ${gpg_percapita_list[response.country].name}:`;
-    loadAll();
-  },
-  "jsonp"
-);
+function setVariables(country = "US") {
+  ghgPerCapita = gpg_percapita_list[country].emissions || 6.27; // Esta es la media mundial
+  huellaFaltante = ghgPerCapita;
+  document.getElementById(
+    "navbar-title"
+  ).innerHTML = `Toneladas de CO2 que emites al año en ${gpg_percapita_list[country].name}:`;
+  loadAll();
+}
+
+// same as above but using fetch
+fetch("https://ipinfo.io?token=4baed24b2d88dc")
+  .then((response) => response.json())
+  .then((data) => setVariables(data.country || "US"))
+  .catch(() => setVariables("US"));
 
 $('[data-toggle="tooltip"]').tooltip();
 
@@ -26,8 +29,9 @@ function loadAll() {
       temp = temp + getCard(card, card.id);
     });
   });
+  console.log(temp);
   document.getElementById("aquiVanCards").innerHTML = temp;
-  barraRoja.innerHTML = ghgPerCapita;
+  barrasRoja.innerHTML = ghgPerCapita;
 }
 
 // Esto igual el espacio del navbar flotante con el espacio de arriba
@@ -47,7 +51,7 @@ function getCard(card, index) {
     <div class="d-flex w-100">
       <ul class="mb-0">
         <li style="font-size: 1.2rem;">
-          Reduce en promedio 
+          Reduce en promedio
           <span class="badge badge-success">${card.med}</span>.
         </li>
       </ul>
@@ -58,10 +62,12 @@ function getCard(card, index) {
       <ul class="mb-0">
         <li style="font-size: 1.2rem;">
           Reduce ${card.min >= 0 ? "entre " : "hasta "}
-          <span class="badge badge-success">${card.max}</span>${card.min >= 0 ? " y " : ", pero puede perjudicar hasta "}
-          <span class="badge badge-${card.min >= 0 ? "success" : "danger"}">${card.min}</span>. Promedio de <span class="badge badge-success">${
-      card.med
-    }</span>.
+          <span class="badge badge-success">${card.max}</span>${
+      card.min >= 0 ? " y " : ", pero puede perjudicar hasta "
+    }
+          <span class="badge badge-${card.min >= 0 ? "success" : "danger"}">${
+      card.min
+    }</span>. Promedio de <span class="badge badge-success">${card.med}</span>.
         </li>
       </ul>
     </div>`;
@@ -108,9 +114,9 @@ function getCard(card, index) {
             class="btn btn-secondary btn-outline-dark"
             style="height: 90px; width: 90px; color: white;"
             id="${index}-0"
-            onclick="loHareYaLoHago('${index}-0', ${card.min == null ? card.med : card.min}, ${card.max == null ? 0 : card.max}, ${
-    card.med
-  }, ${JSON.stringify(card.desabilita)})"
+            onclick="loHareYaLoHago('${index}-0', ${card.min == null ? card.med : card.min}, ${
+    card.max == null ? 0 : card.max
+  }, ${card.med}, ${JSON.stringify(card.desabilita)})"
           >
             Haré esto
           </button>
@@ -119,9 +125,9 @@ function getCard(card, index) {
             class="btn btn-secondary btn-outline-dark"
             style="height: 90px; width: 90px; color: white;"
             id="${index}-1"
-            onclick="loHareYaLoHago('${index}-1', ${card.min == null ? card.med : card.min}, ${card.max == null ? 0 : card.max}, ${
-    card.med
-  },${JSON.stringify(card.desabilita)})"
+            onclick="loHareYaLoHago('${index}-1', ${card.min == null ? card.med : card.min}, ${
+    card.max == null ? 0 : card.max
+  }, ${card.med},${JSON.stringify(card.desabilita)})"
           >
             Ya hago esto
           </button>
